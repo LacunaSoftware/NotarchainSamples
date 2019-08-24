@@ -1,0 +1,16 @@
+# User-specific files
+*.suo
+*.user
+.vs/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+Scripts/*.nupkg
+Scripts/*.zip
+
+# Dependencies
+packages/
+node_modules/
