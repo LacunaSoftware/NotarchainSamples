@@ -15,7 +15,7 @@ namespace NotarchainSample {
 	class Program {
 
 		private static HttpClient client = new HttpClient();
-		private const string apiKey = "------API-KEY-----------";
+		private const string apiKey = "--------API KEY------ Ask for a trial key send a e-mail to support@lacunasoftware.com---- ";
 
 		public static async Task Main(string[] args) {
 			client.BaseAddress = new Uri("https://blockchain.e-notariado.org.br/");
@@ -47,17 +47,17 @@ namespace NotarchainSample {
 			var result = JsonConvert.DeserializeObject<TransactionModel>(data);
 			return (request,result);
 		}
+
 		private static async Task<TransactionDetailedModel> GetInfo(Guid transactionId) {
 			var response = await client.GetStringAsync($"/api/documents/{transactionId}");
 			var result = JsonConvert.DeserializeObject<TransactionDetailedModel>(response);
 			return result;
 		}
+
 		public static byte[] SHA2_512(string text) {
-			byte[] result;
-			using (var algo = new SHA512Managed()) {
-				algo.ComputeHash(Encoding.UTF8.GetBytes(text));
-				result = algo.Hash;
-			}
+			using var algo = new SHA512Managed();
+			algo.ComputeHash(Encoding.UTF8.GetBytes(text));
+			var result = algo.Hash;
 			return result;
 		}
 	}
